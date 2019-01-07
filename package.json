@@ -9,7 +9,9 @@
   "author": "MrGentleDolphin",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "hjs": "0.0.6",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
