@@ -1,13 +1,28 @@
 const express = require('express')
 const socket = require('socket.io')
-const port = 3000
+const bodyParser = require('body-parser')
+const port = process.env.PORT || 8080
 
 let app = express()
 let server = app.listen(port, () => {
     console.log(`Server Started on port ${port}`)
 })
 
-app.use(express.static('public'))
+/* app.use(express.static('public')) */
+app.set('view engine', 'hjs')
+app.use(express.static(__dirname + '/views/'))
+    .use(bodyParser.urlencoded({extended: false}))
+    .use(bodyParser.json())
+
+app
+    .get('/', (req, res) => {
+        res.render('createRoom')
+    })
+    .get('/:room', (req, res) => {
+        let room = req.params.room
+        res.render('index', {room})
+    })
+
 
 let io = socket(server)
 io.on('connection', (socket) => {
