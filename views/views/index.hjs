@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WatchWithMe</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align roomName">{{room}}</h1>
+        <div class="row">
+                <form id="urlForm">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">ondemand_video</i>
+                        <input id="urlInput" type="url">
+                        <label for="urlInput">YouTube Url</label>
+                    </div>
+                </form>
+        </div>
+        
+        <div class="row ">
+            <div class="col w100 riga">
+                <div id="player"></div>
+            </div>
+            <div class="col w100">
+                <ul class="collection messageList with-header" style="overflow-y: scroll; margin-left: 5px; margin-top: 0; max-height: 272px;">
+                    <li class="collection-header">
+                        <h4>Chat</h4>
+                    </li>
+                </ul>
+                <form id="chatForm">
+                    <div class="input-field col w20">
+                        <input id="usernameInput" type="text">
+                        <label for="usernameInput">Username...</label>
+                    </div>
+                    <div class="input-field col w70">
+                        <input id="chatInput" type="text">
+                        <label for="chatInput">Insert text...</label>
+                    </div>
+                    <div class="input-field col w10">
+                        <input class="btn" type="submit" value="Send">
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <style type="text/css">
+            .messageList{
+
+            }
+            .w100{
+                width: 50%;
+            }
+            .w20{
+                width: 20%;
+            }
+            .w70{
+                width: 70%;
+            }
+            .w10{
+                width: 10%;
+            }
+            @media (max-width: 1400px) {
+                .w100 {
+                    width: 100%;
+                }
+                .w30{
+                    width: 100%;
+                }
+                .w80{
+                    width: 100%;
+                }
+                .w10{
+                    width: 100%;
+                }
+            }
+        </style>
+        <script src="/script.js"></script>
+    </div>
+</body>
+</html>
