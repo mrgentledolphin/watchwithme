@@ -29,8 +29,14 @@
         <script>
             document.querySelector('#roomForm').addEventListener('submit', (e) => {
                 e.preventDefault()
-                window.location.href = 'https://watchytwithme.herokuapp.com/' + document.querySelector('#roomName').value
+                let room = document.querySelector('#roomName').value
+                room = encodeHTML(room)
+                window.location.href = 'https://watchytwithme.herokuapp.com/' + room
             })
+
+            function encodeHTML(s) {
+                return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+            }
         </script>
     </div>
 </body>

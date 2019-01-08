@@ -39,7 +39,15 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('videoLoad', data)
     })
     socket.on('chat', (data) => {
-        console.log(data)
-        socket.broadcast.emit('chat', data)
+        socket.broadcast.emit('chat', {
+            text: encodeHTML(data.text),
+            user: encodeHTML(data.user),
+            roomName: encodeHTML(data.roomName)
+        })
     })
 })
+
+
+let encodeHTML = (s) => {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}

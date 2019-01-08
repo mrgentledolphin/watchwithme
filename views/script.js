@@ -16,11 +16,11 @@ let usernameInput = document.getElementById('usernameInput')
 let username, chatText
 chatForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    username = usernameInput.value
+    username = encodeHTML(usernameInput.value)
     if (username == '') {
         username = 'Unknown User'
     }
-    chatText = chatInput.value
+    chatText = encodeHTML(chatInput.value)
     chatInput.value = ''
     socket.emit('chat', {
         text: chatText,
@@ -144,4 +144,8 @@ let loadVideo = (url, sec) => {
 let getVideoId = () => {
     let url = player.getVideoUrl()
     return url.substring((url.length - 11), url.length)
+}
+
+let encodeHTML = (s) => {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }
