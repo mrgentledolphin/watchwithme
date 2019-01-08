@@ -1,6 +1,8 @@
 const express = require('express')
 const socket = require('socket.io')
 const bodyParser = require('body-parser')
+const helmet = require('helmet')
+
 const port = process.env.PORT || 8080
 
 let app = express()
@@ -10,6 +12,8 @@ let server = app.listen(port, () => {
 
 /* app.use(express.static('public')) */
 app.set('view engine', 'hjs')
+app.use(helmet.xssFilter())
+
 app.use(express.static(__dirname + '/views/'))
     .use(bodyParser.urlencoded({extended: false}))
     .use(bodyParser.json())
